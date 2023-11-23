@@ -12,7 +12,7 @@ export default function Home() {
 
   const fetchPosts = async () => {
     try {
-      const response = await fetch("http://0.0.0.0:3000/posts");
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/posts`);
       if (!response.ok) {
         throw new Error("データの取得に失敗しました");
       }
@@ -30,7 +30,7 @@ export default function Home() {
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
     try {
-      const response = await fetch("http://0.0.0.0:3000/posts", {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/posts`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
